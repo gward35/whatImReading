@@ -1,7 +1,6 @@
-import Vue from 'vue'
 import styled from 'vue-styled-components'
 
-const StyledTitle = styled.h1`
+const Title = styled.h1`
   font-size: 1.5em;
   text-align: center;
   color: #ff4947;
@@ -11,11 +10,11 @@ const StyledTitle = styled.h1`
   }
 `
 
-Vue.component('styled-title', {
+export default {
+  name: 'StyledTitle',
+  props: ['text'],
   components: {
-    'styled-title': StyledTitle,
+    Title,
   },
-  template: `<StyledTitle></StyledTitle>`,
-})
-
-export default StyledTitle
+  template: `<Title>{{ text }}</Title>`,
+}
