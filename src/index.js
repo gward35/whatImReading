@@ -1,10 +1,24 @@
 import Vue from 'vue'
 import StyledTitle from './components/StyledTitle'
+import SlidePanel from './components/SlidePanel'
 
 new Vue({
   el: '#app',
   components: {
     StyledTitle,
+    SlidePanel,
+  },
+  data() {
+    return {
+      weatherData: null,
+      panelOpen: false,
+    }
+  },
+  methods: {
+    showPanel() {
+      console.log('lick')
+      this.panelOpen = !this.panelOpen
+    },
   },
   mounted() {
     fetch(
@@ -14,6 +28,7 @@ new Vue({
         return res.json()
       })
       .then(data => {
+        this.weatherData = data
         console.log(data)
       })
   },
