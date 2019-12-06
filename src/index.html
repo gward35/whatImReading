@@ -17,7 +17,11 @@
   <body>
     <div id="app">
       <styled-title text="Hi"></styled-title>
-      <slide-panel @click="showPanel" text="I'm a panel"></slide-panel>
+      <slide-panel
+        @click="showPanel"
+        :open="panelOpen ? '' : false"
+        text="I'm a panel"
+      ></slide-panel>
     </div>
     <script src="index.js"></script>
   </body>
