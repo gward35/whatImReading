@@ -16,12 +16,29 @@
   </head>
   <body>
     <div id="app">
-      <styled-title text="Hi"></styled-title>
-      <slide-panel
-        @click="showPanel"
-        :open="panelOpen ? '' : false"
-        text="I'm a panel"
-      ></slide-panel>
+      <header>
+        <panel-button
+          text="Open Panel"
+          @click="show = !show"
+          v-if="!show"
+        ></panel-button>
+        <panel-button
+          text="Close Panel"
+          @click="show = !show"
+          v-else="show"
+        ></panel-button>
+      </header>
+      <main>
+        <styled-title text="Hi"></styled-title>
+        <weather-card :weather-data="weatherData"> </weather-card>
+        <transition name="fade">
+          <slide-panel
+            v-if="show"
+            text="I'm a panel"
+            @click="show = !show"
+          ></slide-panel>
+        </transition>
+      </main>
     </div>
     <script src="index.js"></script>
   </body>

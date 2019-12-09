@@ -7,6 +7,21 @@ body {
   font-family: 'Oswald', sans-serif;
 }
 
-[v-cloak] {
-  display: none;
+header {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+  max-width: 100%;
+  margin-bottom: 30px;
+  background-color: #f07079;
+  box-shadow: 2px 2px 5px #f07079;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
