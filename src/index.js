@@ -22,10 +22,10 @@ new Vue({
   mounted() {
     axios
       .get(
-        'http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=ab309905673fcd9e124e789edcc7ab70'
+        'http://api.openweathermap.org/data/2.5/group?id=4366164,5037649,5391811&units=imperial&appid=ab309905673fcd9e124e789edcc7ab70'
       )
       .then(res => {
-        this.data = res.data
+        this.data = res.data.list
         console.log(this.data)
       })
   },

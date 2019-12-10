@@ -29,15 +29,38 @@
         ></panel-button>
       </header>
       <main>
-        <styled-title text="Hi"></styled-title>
-        <weather-card v-if="data" :data="data"></weather-card>
-        <transition name="fade">
-          <slide-panel
-            v-if="show"
-            text="I'm a panel"
-            @click="show = !show"
-          ></slide-panel>
-        </transition>
+        <section class="weather-data">
+          <styled-title text="Weather Data"></styled-title>
+          <div class="cards">
+            <weather-card
+              v-for="item in data"
+              :key="item.id"
+              v-if="data"
+              :data="data"
+            >
+              <template v-slot:header>
+                <h3>{{ item.name }}</h3>
+              </template>
+              <template v-slot:content>
+                <p>
+                  Temperature: {{ item.main.temp }} &deg;F<br />High: {{
+                  item.main.temp_max }} &deg;F<br />Low: {{ item.main.temp_min}}
+                  &deg;F
+                </p>
+                <p>
+                  Humidity: {{ item.main.humidity }}%<br />Cloud Cover: {{
+                  item.weather[0].description }}
+                </p>
+              </template>
+            </weather-card>
+          </div>
+        </section>
+
+        <slide-panel
+          v-if="show"
+          text="I'm a panel"
+          @click="show = !show"
+        ></slide-panel>
       </main>
     </div>
     <script src="index.js"></script>

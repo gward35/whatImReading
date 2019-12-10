@@ -3,10 +3,10 @@ import styled from 'vue-styled-components'
 const Title = styled.h1`
   font-size: 1.5em;
   text-align: center;
-  color: #ff4947;
+  color: #151e3f;
   &:hover,
   &:focus {
-    color: #f07079;
+    color: #030027;
   }
 `
 
