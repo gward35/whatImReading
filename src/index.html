@@ -30,7 +30,7 @@
       </header>
       <main>
         <styled-title text="Hi"></styled-title>
-        <weather-card :weather-data="weatherData"> </weather-card>
+        <weather-card v-if="data" :data="data"></weather-card>
         <transition name="fade">
           <slide-panel
             v-if="show"

@@ -16,11 +16,11 @@ const Card = styled.div`
 
 let WeatherCard = {
   name: 'WeatherCard',
-  props: ['weather-data'],
+  props: ['data'],
   components: {
     Card,
   },
-  template: `<Card>{{ weather-data }}</Card>`,
+  template: `<Card>{{ data.name }}</Card>`,
 }
 
 export default WeatherCard

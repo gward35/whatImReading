@@ -15,7 +15,7 @@ new Vue({
   },
   data() {
     return {
-      weatherData: null,
+      data: null,
       show: false,
     }
   },
@@ -25,8 +25,8 @@ new Vue({
         'http://api.openweathermap.org/data/2.5/weather?q=London,uk&appid=ab309905673fcd9e124e789edcc7ab70'
       )
       .then(res => {
-        this.weatherData = res.data
-        console.log(this.weatherData)
+        this.data = res.data
+        console.log(this.data)
       })
   },
 })
