@@ -11,6 +11,7 @@ const Panel = styled.div`
   background-color: #e7e7e7;
   box-shadow: 0 2px 2px #030027;
   transition: all 0.3ms ease-in-out;
+  opacity: 1;
 `
 
 let SlidePanel = {

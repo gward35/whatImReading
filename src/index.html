@@ -55,12 +55,13 @@
             </weather-card>
           </div>
         </section>
-
-        <slide-panel
-          v-if="show"
-          text="I'm a panel"
-          @click="show = !show"
-        ></slide-panel>
+        <transition name="slide">
+          <slide-panel
+            v-if="show"
+            text="I'm a panel"
+            @click="show = !show"
+          ></slide-panel>
+        </transition>
       </main>
     </div>
     <script src="index.js"></script>
