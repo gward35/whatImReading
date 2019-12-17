@@ -24,7 +24,7 @@ let SlidePanel = {
       this.$emit('click')
     },
   },
-  template: `<Panel><PanelButton @click="handleClick" text="Close"></PanelButton>{{ text }}</Panel>`,
+  template: `<Panel class="panel"><PanelButton @click="handleClick" text="Close"></PanelButton>{{ text }}</Panel>`,
 }
 
 export default SlidePanel

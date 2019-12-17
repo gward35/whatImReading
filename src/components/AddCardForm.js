@@ -2,6 +2,8 @@ import styled from 'vue-styled-components'
 
 const CardForm = styled.form`
   position: absolute;
+  top: 50%;
+  left: 50%;
   border-radius: 4px;
   border-bottom: 5px solid #dc9e82;
   background-color: #e7e7e7;
@@ -14,7 +16,7 @@ let AddCardForm = {
   components: {
     CardForm,
   },
-  template: `<CardForm><label for="add-city">Add City</label><input type="text" id="add-city value="" /></CardForm>`,
+  template: `<CardForm class="form"><label for="add-city">Add City</label><input type="text" id="add-city value="" /></CardForm>`,
 }
 
 export default AddCardForm

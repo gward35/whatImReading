@@ -35,11 +35,20 @@ h3 {
   justify-content: center;
 }
 
-.slide-enter-active,
-.slide-leave-active {
+.panel.slide-enter-active,
+.panel.slide-leave-active {
   transition: transform 0.5s ease-in-out;
-  left: 0;
 }
-.slide-enter, .slide-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.panel.slide-enter,
+.panel.slide-leave-to {
   transform: translateX(-500px);
+}
+
+.form.slide-enter-active,
+.form.slide-leave-active {
+  transition: transform 0.5s ease-in-out;
+}
+.form.slide-enter,
+.form.slide-leave-to {
+  transform: translateX(-500%);
 }

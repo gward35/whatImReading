@@ -55,7 +55,9 @@
             </weather-card>
           </div>
           <add-card-button @click="showForm = !showForm"></add-card-button>
-          <add-card-form v-if="showForm"></add-card-form>
+          <transition name="slide">
+            <add-card-form v-if="showForm"></add-card-form>
+          </transition>
         </section>
         <transition name="slide">
           <slide-panel
