@@ -8,8 +8,13 @@ const Card = styled.div`
   border-bottom: 5px solid #c16e70;
   background-color: #e7e7e7;
   box-shadow: 2px 1px 4px 1px #d2d2d2;
-  flex: 1 1 30%;
-  max-width: 30%;
+  flex: 1 1 29%;
+  max-width: 29%;
+  min-width: 200px;
+  margin-right: 2%;
+  &:last-child {
+    margin-right: 0;
+  }
 `
 
 let WeatherCard = {
