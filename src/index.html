@@ -19,13 +19,13 @@
       <header>
         <panel-button
           text="Open Panel"
-          @click="show = !show"
-          v-if="!show"
+          @click="showPanel = !showPanel"
+          v-if="!showPanel"
         ></panel-button>
         <panel-button
           text="Close Panel"
-          @click="show = !show"
-          v-else="show"
+          @click="showPanel = !showPanel"
+          v-else="showPanel"
         ></panel-button>
       </header>
       <main>
@@ -54,12 +54,14 @@
               </template>
             </weather-card>
           </div>
+          <add-card-button @click="showForm = !showForm"></add-card-button>
+          <add-card-form v-if="showForm"></add-card-form>
         </section>
         <transition name="slide">
           <slide-panel
-            v-if="show"
+            v-if="showPanel"
             text="I'm a panel"
-            @click="show = !show"
+            @click="showPanel = !showPanel"
           ></slide-panel>
         </transition>
       </main>

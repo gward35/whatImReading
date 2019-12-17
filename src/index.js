@@ -4,6 +4,8 @@ import StyledTitle from './components/StyledTitle'
 import SlidePanel from './components/SlidePanel'
 import PanelButton from './components/PanelButton'
 import WeatherCard from './components/WeatherCard'
+import AddCardButton from './components/AddCardButton'
+import AddCardForm from './components/AddCardForm'
 
 new Vue({
   el: '#app',
@@ -12,11 +14,14 @@ new Vue({
     SlidePanel,
     PanelButton,
     WeatherCard,
+    AddCardButton,
+    AddCardForm,
   },
   data() {
     return {
       data: null,
-      show: false,
+      showPanel: false,
+      showForm: false,
     }
   },
   mounted() {
