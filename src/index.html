@@ -53,11 +53,11 @@
                 </p>
               </template>
             </weather-card>
+            <transition name="fade">
+              <add-card-form v-if="showForm"></add-card-form>
+            </transition>
           </div>
           <add-card-button @click="showForm = !showForm"></add-card-button>
-          <transition name="slide">
-            <add-card-form v-if="showForm"></add-card-form>
-          </transition>
         </section>
         <transition name="slide">
           <slide-panel
