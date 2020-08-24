@@ -4,22 +4,13 @@ body {
   height: 100%;
   margin: 0;
   overflow-x: hidden;
-  font-family: 'Oswald', sans-serif;
-}
-
-header {
-  position: relative;
-  display: flex;
-  justify-content: flex-end;
-  padding: 20px 30px;
-  max-width: 100%;
-  margin-bottom: 30px;
-  background-color: #151e3f;
+  font-family: "Oswald", sans-serif;
 }
 
 main {
-  padding: 0 10%;
-  max-width: 1500px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 h2,
@@ -28,59 +19,12 @@ h3 {
   text-transform: uppercase;
 }
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
+.book-data {
+  padding: 0 60px;
 
-.control-container {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  justify-content: center;
-
-  label,
-  input {
-    margin-bottom: 20px;
+  .cards {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
   }
-
-  input {
-    min-height: 30px;
-    border: 1px solid #bebebe;
-    border-radius: 4px;
-  }
-
-  button {
-    background-color: #dc9e82;
-    border-radius: 4px;
-    color: #fff;
-    max-width: 80px;
-    min-height: 30px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-
-    &:hover,
-    &:focus {
-      background-color: #c89077;
-    }
-  }
-}
-
-.panel.slide-enter-active,
-.panel.slide-leave-active {
-  transition: transform 0.5s ease-in-out;
-}
-.panel.slide-enter,
-.panel.slide-leave-to {
-  transform: translateX(-500px);
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.5s;
-}
-.fade-enter,
-.fade-leave-to {
-  opacity: 0;
 }

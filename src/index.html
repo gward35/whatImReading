@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
     />
-    <title>Vue Weather</title>
+    <title>Vue What I'm Reading</title>
     <link href="scss/style.scss" rel="stylesheet" />
     <link
       href="https://fonts.googleapis.com/css?family=Oswald:400,600&display=swap"
@@ -16,55 +16,31 @@
   </head>
   <body>
     <div id="app">
-      <header>
-        <panel-button
-          text="Open Panel"
-          @click="showPanel = !showPanel"
-          v-if="!showPanel"
-        ></panel-button>
-        <panel-button
-          text="Close Panel"
-          @click="showPanel = !showPanel"
-          v-else="showPanel"
-        ></panel-button>
-      </header>
       <main>
-        <section class="weather-data">
-          <styled-title text="Weather Data"></styled-title>
+        <section class="book-data">
+          <styled-title text="What I'm Reading"></styled-title>
           <div class="cards">
-            <weather-card
+            <book-card
               v-for="item in data"
               :key="item.id"
               v-if="data"
               :data="data"
             >
               <template v-slot:header>
-                <h3>{{ item.name }}</h3>
+                <h3>{{item.book.title}}</h3>
               </template>
               <template v-slot:content>
                 <p>
-                  Temperature: {{ item.main.temp }} &deg;F<br />High: {{
-                  item.main.temp_max }} &deg;F<br />Low: {{ item.main.temp_min}}
-                  &deg;F
+                  by {{item.book.authors.author.name}}
                 </p>
+                <span>{{item.shelves.shelf['@attributes'].name}}</span>
                 <p>
-                  Humidity: {{ item.main.humidity }}%<br />Cloud Cover: {{
-                  item.weather[0].description }}
+                  //
                 </p>
               </template>
-            </weather-card>
-            <transition name="fade">
-              <add-card-form v-if="showForm"></add-card-form>
-            </transition>
+            </book-card>
           </div>
-          <add-card-button @click="showForm = !showForm"></add-card-button>
         </section>
-        <transition name="slide">
-          <slide-panel
-            v-if="showPanel"
-            @click="showPanel = !showPanel"
-          ></slide-panel>
-        </transition>
       </main>
     </div>
     <script src="index.js"></script>

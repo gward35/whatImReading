@@ -1,37 +1,98 @@
-import Vue from 'vue'
-import axios from 'axios'
-import StyledTitle from './components/StyledTitle'
-import SlidePanel from './components/SlidePanel'
-import PanelButton from './components/PanelButton'
-import WeatherCard from './components/WeatherCard'
-import AddCardButton from './components/AddCardButton'
-import AddCardForm from './components/AddCardForm'
+import Vue from "vue";
+import axios from "axios";
+import StyledTitle from "./components/StyledTitle";
+import BookCard from "./components/BookCard";
+
+/**
+ * Changes XML to JSON
+ * Modified version from here: http://davidwalsh.name/convert-xml-json
+ * @param {string} xml XML DOM tree
+ */
+function xmlToJson(xml) {
+  // Create the return object
+  var obj = {};
+
+  if (xml.nodeType == 1) {
+    // element
+    // do attributes
+    if (xml.attributes.length > 0) {
+      obj["@attributes"] = {};
+      for (var j = 0; j < xml.attributes.length; j++) {
+        var attribute = xml.attributes.item(j);
+        obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
+      }
+    }
+  } else if (xml.nodeType == 3) {
+    // text
+    obj = xml.nodeValue;
+  }
+
+  // do children
+  // If all text nodes inside, get concatenated text from them.
+  var textNodes = [].slice.call(xml.childNodes).filter(function(node) {
+    return node.nodeType === 3;
+  });
+  if (xml.hasChildNodes() && xml.childNodes.length === textNodes.length) {
+    obj = [].slice.call(xml.childNodes).reduce(function(text, node) {
+      return text + node.nodeValue;
+    }, "");
+  } else if (xml.hasChildNodes()) {
+    for (var i = 0; i < xml.childNodes.length; i++) {
+      var item = xml.childNodes.item(i);
+      var nodeName = item.nodeName;
+      if (typeof obj[nodeName] == "undefined") {
+        obj[nodeName] = xmlToJson(item);
+      } else {
+        if (typeof obj[nodeName].push == "undefined") {
+          var old = obj[nodeName];
+          obj[nodeName] = [];
+          obj[nodeName].push(old);
+        }
+        obj[nodeName].push(xmlToJson(item));
+      }
+    }
+  }
+  return obj;
+}
+
+/*
+Usage:
+1. If you have an XML file URL:
+const response = await fetch('file_url');
+const xmlString = await response.text();
+var XmlNode = new DOMParser().parseFromString(xmlString, 'text/xml');
+xmlToJson(XmlNode);
+2. If you have an XML as string:
+var XmlNode = new DOMParser().parseFromString(yourXmlString, 'text/xml');
+xmlToJson(XmlNode);
+3. If you have the XML as a DOM Node:
+xmlToJson(YourXmlNode);
+*/
 
 new Vue({
-  el: '#app',
+  el: "#app",
   components: {
     StyledTitle,
-    SlidePanel,
-    PanelButton,
-    WeatherCard,
-    AddCardButton,
-    AddCardForm,
+    BookCard,
   },
   data() {
     return {
       data: null,
       showPanel: false,
       showForm: false,
-    }
+    };
   },
   mounted() {
     axios
       .get(
-        'http://api.openweathermap.org/data/2.5/group?id=4366164,5037649,5391811&units=imperial&appid=ab309905673fcd9e124e789edcc7ab70'
+        "https://www.goodreads.com/review/list/120328741.xml?key=hOiPgdqK2HNtgNXk1xTWlA&v=2"
       )
-      .then(res => {
-        this.data = res.data.list
-        console.log(this.data)
-      })
+      .then((res) => {
+        let xmlNode = new DOMParser().parseFromString(res.data, "text/xml");
+        let formatted = xmlToJson(xmlNode);
+        this.data = formatted.GoodreadsResponse.reviews.review;
+
+        console.log(this.data);
+      });
   },
-})
+});

@@ -7,15 +7,15 @@
     "axios": "^0.19.2",
     "axois": "0.0.1-security",
     "components": "^0.1.0",
-    "vue": "^2.6.11",
+    "vue": "^2.6.12",
     "vue-hot-reload-api": "^2.3.4",
-    "vue-styled-components": "^1.4.14"
+    "vue-styled-components": "^1.5.1"
   },
   "devDependencies": {
-    "@vue/component-compiler-utils": "^3.1.2",
+    "@vue/component-compiler-utils": "^3.2.0",
     "parcel-bundler": "^1.12.4",
-    "sass": "^1.26.3",
-    "vue-template-compiler": "^2.6.11"
+    "sass": "^1.26.10",
+    "vue-template-compiler": "^2.6.12"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js"
