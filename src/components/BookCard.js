@@ -14,6 +14,9 @@ const Card = styled.div`
   &:nth-child(even) {
     margin-right: 0;
   }
+  &:last-child {
+    margin-right: 0;
+  }
 `;
 
 let BookCard = {

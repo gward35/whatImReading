@@ -2,6 +2,7 @@ import Vue from "vue";
 import axios from "axios";
 import StyledTitle from "./components/StyledTitle";
 import BookCard from "./components/BookCard";
+import apiEndpoint from "../config.js";
 
 /**
  * Changes XML to JSON
@@ -83,16 +84,12 @@ new Vue({
     };
   },
   mounted() {
-    axios
-      .get(
-        "https://www.goodreads.com/review/list/120328741.xml?key=hOiPgdqK2HNtgNXk1xTWlA&v=2"
-      )
-      .then((res) => {
-        let xmlNode = new DOMParser().parseFromString(res.data, "text/xml");
-        let formatted = xmlToJson(xmlNode);
-        this.data = formatted.GoodreadsResponse.reviews.review;
+    axios.get(apiEndpoint).then((res) => {
+      let xmlNode = new DOMParser().parseFromString(res.data, "text/xml");
+      let formatted = xmlToJson(xmlNode);
+      this.data = formatted.GoodreadsResponse.reviews.review;
 
-        console.log(this.data);
-      });
+      console.log(this.data);
+    });
   },
 });
