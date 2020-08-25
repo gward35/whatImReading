@@ -1,6 +1,5 @@
 import Vue from "vue";
 import axios from "axios";
-import StyledTitle from "./components/StyledTitle";
 import BookCard from "./components/BookCard";
 import apiEndpoint from "../config.js";
 
@@ -73,14 +72,11 @@ xmlToJson(YourXmlNode);
 new Vue({
   el: "#app",
   components: {
-    StyledTitle,
     BookCard,
   },
   data() {
     return {
       data: null,
-      showPanel: false,
-      showForm: false,
     };
   },
   mounted() {

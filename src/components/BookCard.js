@@ -3,19 +3,30 @@ import styled from "vue-styled-components";
 const Card = styled.div`
   position: relative;
   padding: 20px;
-  color: #2c2637;
-  border-radius: 4px;
-  border-bottom: 5px solid #c16e70;
-  background-color: #e7e7e7;
-  box-shadow: 2px 1px 4px 1px #d2d2d2;
-  margin-right: 30px;
-  margin-bottom: 30px;
-  flex: 1 1 30%;
-  &:nth-child(even) {
+  color: #000;
+  border: 1px solid #000;
+  background-color: #ffc09f;
+  flex: 1 1 19%;
+  max-width: 19%;
+  margin-right: 3%;
+  margin-bottom: 3%;
+
+  &:nth-child(4n) {
     margin-right: 0;
   }
+
   &:last-child {
     margin-right: 0;
+  }
+
+  @media screen and (max-width: 1169px) {
+    &:nth-child(3n) {
+      margin-right: 0;
+    }
+
+    &:nth-child(4n) {
+      margin-right: 3%;
+    }
   }
 `;
 
@@ -25,7 +36,7 @@ let BookCard = {
   components: {
     Card,
   },
-  template: `<Card><slot name="header"></slot><slot name="content"></slot></Card>`,
+  template: `<Card><slot name="image"></slot><slot name="header"></slot><slot name="content"></slot></Card>`,
 };
 
 export default BookCard;

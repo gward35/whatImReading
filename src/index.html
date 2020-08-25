@@ -18,7 +18,16 @@
     <div id="app">
       <main>
         <section class="book-data">
-          <styled-title text="What I'm Reading"></styled-title>
+          <div class="header-container">
+            <h1 class="styled-title">What I'm Reading</h1>
+            <h1 class="styled-title offset" aria-hidden="true">
+              What I'm Reading
+            </h1>
+            <h1 class="styled-title offset stroke" aria-hidden="true">
+              What I'm Reading
+            </h1>
+          </div>
+
           <div class="cards">
             <book-card
               v-for="item in data"
@@ -26,16 +35,23 @@
               v-if="data"
               :data="data"
             >
+              <template v-slot:image>
+                <img :src="item.book.image_url" />
+              </template>
               <template v-slot:header>
-                <h3>{{item.book.title}}</h3>
+                <h2>{{item.book.title_without_series}}</h2>
               </template>
               <template v-slot:content>
                 <p>
                   by {{item.book.authors.author.name}}
                 </p>
-                <span>{{item.shelves.shelf['@attributes'].name}}</span>
-                <p>
-                  //
+                <span
+                  v-bind:class="{'read' : item.shelves.shelf['@attributes'].name === 'read', 'to-read' : item.shelves.shelf['@attributes'].name === 'to-read', 'reading' : item.shelves.shelf['@attributes'].name === 'reading'}"
+                >
+                  {{item.shelves.shelf['@attributes'].name}}</span
+                >
+                <p v-if="item.rating !== '0'">
+                  {{item.rating}} / 5
                 </p>
               </template>
             </book-card>
