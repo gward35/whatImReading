@@ -6,26 +6,48 @@ const Card = styled.div`
   color: #000;
   border: 1px solid #000;
   background-color: #ffc09f;
-  flex: 1 1 19%;
-  max-width: 19%;
-  margin-right: 3%;
-  margin-bottom: 3%;
 
-  &:nth-child(4n) {
+  @media screen and (max-width: 768px) {
+    flex: 1 1 50%;
+    max-width: 50%;
+    margin-bottom: 30px;
     margin-right: 0;
   }
 
-  &:last-child {
-    margin-right: 0;
+  @media screen and (min-width: 769px) and (max-width: 997px) {
+    flex: 1 1 40%;
+    max-width: 40%;
+    margin-right: 30px;
+    margin-bottom: 30px;
+
+    &:nth-child(even) {
+      margin-right: 0;
+    }
   }
 
-  @media screen and (max-width: 1169px) {
+  @media screen and (min-width: 998px) and (max-width: 1194px) {
+    flex: 1 1 19%;
+    max-width: 19%;
+    margin-right: 30px;
+    margin-bottom: 30px;
+
     &:nth-child(3n) {
       margin-right: 0;
     }
 
     &:nth-child(4n) {
-      margin-right: 3%;
+      margin-right: 30px;
+    }
+  }
+
+  @media screen and (min-width: 1195px) {
+    flex: 1 1 18%;
+    max-width: 18%;
+    margin-right: 30px;
+    margin-bottom: 30px;
+
+    &:nth-child(4n) {
+      margin-right: 0;
     }
   }
 `;

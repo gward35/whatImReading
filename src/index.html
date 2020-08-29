@@ -29,12 +29,7 @@
           </div>
 
           <div class="cards">
-            <book-card
-              v-for="item in data"
-              :key="item.id"
-              v-if="data"
-              :data="data"
-            >
+            <book-card v-for="item in data" :key="item.id" v-if="data">
               <template v-slot:image>
                 <img :src="item.book.image_url" />
               </template>
@@ -45,9 +40,7 @@
                 <p>
                   by {{item.book.authors.author.name}}
                 </p>
-                <span
-                  v-bind:class="{'read' : item.shelves.shelf['@attributes'].name === 'read', 'to-read' : item.shelves.shelf['@attributes'].name === 'to-read', 'reading' : item.shelves.shelf['@attributes'].name === 'reading'}"
-                >
+                <span v-bind:class="item.shelves.shelf['@attributes'].name">
                   {{item.shelves.shelf['@attributes'].name}}</span
                 >
                 <p v-if="item.rating !== '0'">
