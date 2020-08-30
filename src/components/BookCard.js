@@ -4,8 +4,8 @@ const Card = styled.div`
   position: relative;
   padding: 20px;
   color: #000;
-  border: 1px solid #000;
-  background-color: #ffc09f;
+  border: 1px solid #5facbf;
+  background-color: #c5e1e8;
 
   @media screen and (max-width: 768px) {
     flex: 1 1 50%;

@@ -84,6 +84,7 @@ new Vue({
       let xmlNode = new DOMParser().parseFromString(res.data, "text/xml");
       let formatted = xmlToJson(xmlNode);
       this.data = formatted.GoodreadsResponse.reviews.review;
+      console.log(this.data);
     });
   },
 });

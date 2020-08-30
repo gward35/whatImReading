@@ -34,7 +34,11 @@
                 <img :src="item.book.image_url" />
               </template>
               <template v-slot:header>
-                <h2>{{item.book.title_without_series}}</h2>
+                <h2>
+                  <a class="link" target="_blank" v-bind:href="item.book.link"
+                    >{{item.book.title_without_series}}</a
+                  >
+                </h2>
               </template>
               <template v-slot:content>
                 <p>

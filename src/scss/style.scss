@@ -63,6 +63,15 @@ main {
       font-size: 20px;
       line-height: 1.2;
       margin-bottom: 0;
+
+      .link {
+        text-decoration: none;
+        color: #000;
+
+        &:hover {
+          color: #3a8292;
+        }
+      }
     }
 
     p {
@@ -88,7 +97,7 @@ main {
       }
 
       &.to-read {
-        background-color: #a0ced9;
+        background-color: #ffc9ad;
         padding: 5px 7px;
         border-radius: 3px;
       }
