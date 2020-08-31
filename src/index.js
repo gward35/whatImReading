@@ -80,7 +80,7 @@ new Vue({
     };
   },
   mounted() {
-    axios.get(apiEndpoint).then((res) => {
+    fetch(apiEndpoint).then((res) => {
       let xmlNode = new DOMParser().parseFromString(res.data, "text/xml");
       let formatted = xmlToJson(xmlNode);
       this.data = formatted.GoodreadsResponse.reviews.review;
