@@ -3,4 +3,3 @@ dist/
 .prettierrc
 .cache
 .vscode
-config.js
