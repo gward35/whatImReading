@@ -1,7 +1,6 @@
 import Vue from "vue";
 import axios from "axios";
 import BookCard from "./components/BookCard";
-import apiEndpoint from "../config.js";
 
 /**
  * Changes XML to JSON
@@ -81,7 +80,7 @@ new Vue({
   },
   mounted() {
     axios
-      .get("https://cors-anywhere.herokuapp.com/" + apiEndpoint)
+      .get("https://cors-anywhere.herokuapp.com/" + process.env.API_URL)
       .then((res) => {
         let xmlNode = new DOMParser().parseFromString(res.data, "text/xml");
         let formatted = xmlToJson(xmlNode);
