@@ -80,11 +80,13 @@ new Vue({
     };
   },
   mounted() {
-    fetch(apiEndpoint).then((res) => {
-      let xmlNode = new DOMParser().parseFromString(res.data, "text/xml");
-      let formatted = xmlToJson(xmlNode);
-      this.data = formatted.GoodreadsResponse.reviews.review;
-      console.log(this.data);
-    });
+    axios
+      .get("https://cors-anywhere.herokuapp.com/" + apiEndpoint)
+      .then((res) => {
+        let xmlNode = new DOMParser().parseFromString(res.data, "text/xml");
+        let formatted = xmlToJson(xmlNode);
+        this.data = formatted.GoodreadsResponse.reviews.review;
+        console.log(this.data);
+      });
   },
 });
