@@ -7,7 +7,6 @@ const Card = styled.div`
   border: 1px solid #5facbf;
   background-color: #c5e1e8;
   transition: border-bottom-right-radius 1s, box-shadow 0.8s, transform 1s;
-  overflow: hidden;
   &:after {
     position: absolute;
     bottom: 0px;
