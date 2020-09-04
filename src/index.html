@@ -24,9 +24,9 @@
               What I'm Reading
             </h1>
           </div>
-          <div class="loading" v-if="!data">
+          <!-- <div class="loading" v-if="!data">
             <p>Getting all those pages...</p>
-          </div>
+          </div> -->
           <div class="cards">
             <book-card v-for="item in data" :key="item.id" v-if="data">
               <template v-slot:image>
