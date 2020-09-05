@@ -24,31 +24,43 @@
               What I'm Reading
             </h1>
           </div>
-          <!-- <div class="loading" v-if="!data">
+          <div class="loading" v-if="loading">
             <p>Getting all those pages...</p>
-          </div> -->
-          <div class="cards">
-            <book-card v-for="item in data" :key="item.id" v-if="data">
+          </div>
+          <section class="loading" v-if="errored">
+            <p>
+              Sorry, we couldn't get those pages, try again later.
+            </p>
+          </section>
+
+          <div class="cards" v-else>
+            <book-card v-for="item in data" :key="item.id">
               <template v-slot:image>
-                <img :src="item.book.image_url" />
+                <img :src="item.volumeInfo.imageLinks.thumbnail" />
               </template>
               <template v-slot:header>
                 <h2>
-                  <a class="link" target="_blank" v-bind:href="item.book.link"
-                    >{{item.book.title_without_series}}</a
-                  >
+                  <a
+                    class="link"
+                    target="_blank"
+                    v-bind:href="item.volumeInfo.infoLink"
+                    v-if="item.volumeInfo.subtitle"
+                    >{{item.volumeInfo.title}} {{item.volumeInfo.subtitle}}
+                  </a>
+                  <a
+                    class="link"
+                    target="_blank"
+                    v-bind:href="item.volumeInfo.infoLink"
+                    v-else
+                    >{{item.volumeInfo.title}}
+                  </a>
                 </h2>
               </template>
               <template v-slot:content>
                 <p>
-                  by {{item.book.authors.author.name}}
+                  by {{item.volumeInfo.authors[0]}}
                 </p>
-                <span v-bind:class="item.shelves.shelf['@attributes'].name">
-                  {{item.shelves.shelf['@attributes'].name}}</span
-                >
-                <p v-if="item.rating !== '0'">
-                  Rating: {{item.rating}} / 5
-                </p>
+                <span v-bind:class="item.shelf"> {{item.shelf}}</span>
               </template>
             </book-card>
           </div>

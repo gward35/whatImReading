@@ -2,72 +2,6 @@ import Vue from "vue";
 import axios from "axios";
 import BookCard from "./components/BookCard";
 
-/**
- * Changes XML to JSON
- * Modified version from here: http://davidwalsh.name/convert-xml-json
- * @param {string} xml XML DOM tree
- */
-function xmlToJson(xml) {
-  // Create the return object
-  var obj = {};
-
-  if (xml.nodeType == 1) {
-    // element
-    // do attributes
-    if (xml.attributes.length > 0) {
-      obj["@attributes"] = {};
-      for (var j = 0; j < xml.attributes.length; j++) {
-        var attribute = xml.attributes.item(j);
-        obj["@attributes"][attribute.nodeName] = attribute.nodeValue;
-      }
-    }
-  } else if (xml.nodeType == 3) {
-    // text
-    obj = xml.nodeValue;
-  }
-
-  // do children
-  // If all text nodes inside, get concatenated text from them.
-  var textNodes = [].slice.call(xml.childNodes).filter(function(node) {
-    return node.nodeType === 3;
-  });
-  if (xml.hasChildNodes() && xml.childNodes.length === textNodes.length) {
-    obj = [].slice.call(xml.childNodes).reduce(function(text, node) {
-      return text + node.nodeValue;
-    }, "");
-  } else if (xml.hasChildNodes()) {
-    for (var i = 0; i < xml.childNodes.length; i++) {
-      var item = xml.childNodes.item(i);
-      var nodeName = item.nodeName;
-      if (typeof obj[nodeName] == "undefined") {
-        obj[nodeName] = xmlToJson(item);
-      } else {
-        if (typeof obj[nodeName].push == "undefined") {
-          var old = obj[nodeName];
-          obj[nodeName] = [];
-          obj[nodeName].push(old);
-        }
-        obj[nodeName].push(xmlToJson(item));
-      }
-    }
-  }
-  return obj;
-}
-
-/*
-Usage:
-1. If you have an XML file URL:
-const response = await fetch('file_url');
-const xmlString = await response.text();
-var XmlNode = new DOMParser().parseFromString(xmlString, 'text/xml');
-xmlToJson(XmlNode);
-2. If you have an XML as string:
-var XmlNode = new DOMParser().parseFromString(yourXmlString, 'text/xml');
-xmlToJson(XmlNode);
-3. If you have the XML as a DOM Node:
-xmlToJson(YourXmlNode);
-*/
-
 new Vue({
   el: "#app",
   components: {
@@ -75,17 +9,46 @@ new Vue({
   },
   data() {
     return {
+      errored: false,
+      loading: true,
       data: null,
     };
   },
   mounted() {
+    let currentlyReading = axios.get(
+      "https://cors-anywhere.herokuapp.com/" + process.env.API_URL_READING
+    );
+    let toRead = axios.get(
+      "https://cors-anywhere.herokuapp.com/" + process.env.API_URL_TOREAD
+    );
+    let read = axios.get(
+      "https://cors-anywhere.herokuapp.com/" + process.env.API_URL_READ
+    );
+
     axios
-      .get("https://cors-anywhere.herokuapp.com/" + process.env.API_URL)
-      .then((res) => {
-        let xmlNode = new DOMParser().parseFromString(res.data, "text/xml");
-        let formatted = xmlToJson(xmlNode);
-        this.data = formatted.GoodreadsResponse.reviews.review;
-        console.log(this.data);
-      });
+      .all([currentlyReading, toRead, read])
+      .then(
+        axios.spread((...res) => {
+          let array = [];
+          res.map((item) => {
+            item.data.items.map((book) => {
+              // determing which class to pass in for read/reading/to read badge
+              book.shelf = item.config.url.includes("3/volumes")
+                ? "currently-reading"
+                : item.config.url.includes("2/volumes")
+                ? "to-read"
+                : "read";
+              return array.push(book);
+            });
+          });
+
+          this.data = array;
+        })
+      )
+      .catch((error) => {
+        this.errored = true;
+        console.warn(error);
+      })
+      .finally(() => (this.loading = false));
   },
 });
