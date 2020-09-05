@@ -32,6 +32,12 @@ new Vue({
           let array = [];
           res.map((item) => {
             item.data.items.map((book) => {
+              //make sure book links are loaded via https
+              book.volumeInfo.imageLinks.thumbnail = book.volumeInfo.imageLinks.thumbnail.replace(
+                /^http:\/\//i,
+                "https://"
+              );
+
               // determing which class to pass in for read/reading/to read badge
               book.shelf = item.config.url.includes("3/volumes")
                 ? "currently-reading"
