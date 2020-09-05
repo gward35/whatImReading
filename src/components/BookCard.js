@@ -31,8 +31,8 @@ const Card = styled.div`
   }
 
   @media screen and (max-width: 768px) {
-    flex: 1 1 50%;
-    max-width: 50%;
+    flex: 1 1 75%;
+    max-width: 75%;
     margin-bottom: 30px;
     margin-right: 0;
   }

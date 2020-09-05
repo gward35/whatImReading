@@ -60,7 +60,11 @@ main {
         -webkit-text-stroke: 1px black;
       }
 
-      @media screen and (max-width: 768px) {
+      @media screen and (max-width: 320px) {
+        font-size: 50px;
+      }
+
+      @media screen and (min-width: 321px) and (max-width: 768px) {
         font-size: 70px;
       }
     }
