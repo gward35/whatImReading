@@ -9,7 +9,7 @@
     "components": "^0.1.0",
     "vue": "^2.6.12",
     "vue-hot-reload-api": "^2.3.4",
-    "vue-styled-components": "^1.5.1"
+    "vue-styled-components": "^1.6.0"
   },
   "devDependencies": {
     "@vue/component-compiler-utils": "^3.2.0",
