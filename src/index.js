@@ -49,6 +49,7 @@ new Vue({
           });
 
           this.data = array;
+          console.log(this.data);
         })
       )
       .catch((error) => {
