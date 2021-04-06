@@ -15,12 +15,11 @@ new Vue({
     };
   },
   mounted() {
-    let key = "AIzaSyAHgr8HZGnp1UXlOKShBSV35R2IwQdfOBQ";
     let currentlyReading = axios.get(
-      process.env.API_URL_READING + "?key=" + key
+      process.env.API_URL_READING + "?key=" + process.env.API_KEY
     );
-    let toRead = axios.get(process.env.API_URL_TOREAD + "?key=" + key);
-    let read = axios.get(process.env.API_URL_READ + "?key=" + key);
+    let toRead = axios.get(process.env.API_URL_TOREAD + "?key=" + process.env.API_KEY);
+    let read = axios.get(process.env.API_URL_READ + "?key=" + process.env.API_KEY);
 
     axios
       .all([currentlyReading, toRead, read])
