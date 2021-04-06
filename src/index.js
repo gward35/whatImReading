@@ -15,15 +15,12 @@ new Vue({
     };
   },
   mounted() {
+    let key = "AIzaSyAHgr8HZGnp1UXlOKShBSV35R2IwQdfOBQ";
     let currentlyReading = axios.get(
-      "https://cors-anywhere.herokuapp.com/" + process.env.API_URL_READING
+      process.env.API_URL_READING + "?key=" + key
     );
-    let toRead = axios.get(
-      "https://cors-anywhere.herokuapp.com/" + process.env.API_URL_TOREAD
-    );
-    let read = axios.get(
-      "https://cors-anywhere.herokuapp.com/" + process.env.API_URL_READ
-    );
+    let toRead = axios.get(process.env.API_URL_TOREAD + "?key=" + key);
+    let read = axios.get(process.env.API_URL_READ + "?key=" + key);
 
     axios
       .all([currentlyReading, toRead, read])
@@ -49,7 +46,6 @@ new Vue({
           });
 
           this.data = array;
-          console.log(this.data);
         })
       )
       .catch((error) => {
