@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "axios": "^0.21.4",
+    "axios": "^0.22.0",
     "components": "^0.1.0",
     "vue": "^2.6.12",
     "vue-hot-reload-api": "^2.3.4",
