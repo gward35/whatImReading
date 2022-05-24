@@ -18,8 +18,12 @@ new Vue({
     let currentlyReading = axios.get(
       process.env.API_URL_READING + "?key=" + process.env.API_KEY
     );
-    let toRead = axios.get(process.env.API_URL_TOREAD + "?key=" + process.env.API_KEY);
-    let read = axios.get(process.env.API_URL_READ + "?key=" + process.env.API_KEY);
+    let toRead = axios.get(
+      process.env.API_URL_TOREAD + "?key=" + process.env.API_KEY
+    );
+    let read = axios.get(
+      process.env.API_URL_READ + "?key=" + process.env.API_KEY
+    );
 
     axios
       .all([currentlyReading, toRead, read])
@@ -29,10 +33,11 @@ new Vue({
           res.map((item) => {
             item.data.items.map((book) => {
               //make sure book links are loaded via https
-              book.volumeInfo.imageLinks.thumbnail = book.volumeInfo.imageLinks.thumbnail.replace(
-                /^http:\/\//i,
-                "https://"
-              );
+              book.volumeInfo.imageLinks.thumbnail =
+                book.volumeInfo.imageLinks.thumbnail.replace(
+                  /^http:\/\//i,
+                  "https://"
+                );
 
               // determing which class to pass in for read/reading/to read badge
               book.shelf = item.config.url.includes("3/volumes")

@@ -1,7 +1,7 @@
 node_modules
 dist/
 .prettierrc
-.cache
+.parcel-cache
 .vscode
 # Local Netlify folder
 .netlify
