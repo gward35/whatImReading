@@ -7,7 +7,7 @@
     "axios": "^0.27.2",
     "components": "^0.1.0",
     "parcel": "^2.6.2",
-    "vue": "^2.6.14",
+    "vue": "^2.7.10",
     "vue-hot-reload-api": "^2.3.4",
     "vue-styled-components": "^1.0.4"
   },
@@ -17,7 +17,7 @@
     "buffer": "^6.0.3",
     "process": "^0.11.10",
     "sass": "^1.53.0",
-    "vue-template-compiler": "^2.6.14"
+    "vue-template-compiler": "^2.7.10"
   },
   "alias": {
     "vue": "./node_modules/vue/dist/vue.common.js"
