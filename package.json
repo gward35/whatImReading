@@ -4,17 +4,17 @@
   "version": "1.0.0",
   "description": "",
   "dependencies": {
-    "@vue/compat": "3.1.0",
+    "@vue/compat": "3.2.45",
     "axios": "^0.27.2",
     "components": "^0.1.0",
     "parcel": "2.8.0",
-    "vue": "3.1.0",
+    "vue": "3.2.45",
     "vue-hot-reload-api": "^2.3.4",
     "vue3-styled-components": "^1.2.1"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.8.0",
-    "@vue/compiler-sfc": "3.1.0",
+    "@vue/compiler-sfc": "3.2.45",
     "@vue/component-compiler-utils": "^3.3.0",
     "buffer": "5.5.0",
     "node-fetch": "3.3.0",
