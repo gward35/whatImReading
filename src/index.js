@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue/dist/vue.esm-bundler'
 import axios from "axios";
 import BookCard from "./components/BookCard";
 import {ThemeProvider} from 'vue3-styled-components'
