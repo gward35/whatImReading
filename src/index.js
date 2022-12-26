@@ -1,9 +1,12 @@
-import { createApp } from 'vue/dist/vue.esm-bundler'
+import { createApp } from 'vue'
 import axios from "axios";
 import BookCard from "./components/BookCard";
+import {ThemeProvider} from 'vue3-styled-components'
+
 
 const app = createApp({
   components: {
+    'theme-provider': ThemeProvider,
     BookCard
   },
   data() {
