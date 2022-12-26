@@ -22,7 +22,7 @@
     "sass": "^1.55.0"
   },
   "alias": {
-    "vue": "./node_modules/vue/dist/vue.esm-bundler.js"
+    "vue": "./node_modules/vue/dist/vue.esm-browser.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
