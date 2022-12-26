@@ -1,4 +1,4 @@
-import styled from "vue-styled-components";
+import styled from "vue3-styled-components";
 
 const Card = styled.div`
   position: relative;

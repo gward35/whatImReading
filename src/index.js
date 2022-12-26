@@ -1,11 +1,13 @@
-import Vue from "vue";
+import { createApp } from 'vue'
 import axios from "axios";
 import BookCard from "./components/BookCard";
+import {ThemeProvider} from 'vue3-styled-components'
 
-new Vue({
-  el: "#app",
+
+const app = createApp({
   components: {
-    BookCard,
+    'theme-provider': ThemeProvider,
+    BookCard
   },
   data() {
     return {
@@ -57,5 +59,7 @@ new Vue({
         console.warn(error);
       })
       .finally(() => (this.loading = false));
-  },
-});
+    }
+})
+
+app.mount('#app')
