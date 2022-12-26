@@ -24,7 +24,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel src/index.html --open",
-    "build": "npx -p parcel-bundler parcel build index.html"
+    "build": "npx -p parcel-bundler parcel build src/index.html"
   },
   "author": "Gretchen Ward",
   "license": "ISC"
